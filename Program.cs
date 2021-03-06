@@ -3,6 +3,7 @@
 using CafeCustomerInfoRecord.Concrete;
 using CafeCustomerInfoRecord.Abstract;
 using CafeCustomerInfoRecord.Entities;
+using CafeCustomerInfoRecord.Adapters;
 
 namespace CafeCustomerInfoRecord
 {
@@ -10,8 +11,9 @@ namespace CafeCustomerInfoRecord
     {
         static void Main(string[] args)
         {
-            BaseCustomerManager customerManager = new StarbucksCustomerManager(new CustomerCheckManager);
-            customerManager.Save(new Customer { FirstName = "Kutsal", LastName = "Mustafaoglu", DateOfBirth = new DateTime(1990, 04, 26), NationalityId = "11111111111", Id = 1 });
+            BaseCustomerManager customerManager = new StarbucksCustomerManager(new MernisServiceAdapter());
+            customerManager.Save(new Customer { FirstName = "Kutsal", LastName = "Mustafaoğlu", DateOfBirth = new DateTime(1991,04,26), NationalityId = "11111111111", Id = 1 });
+            Console.ReadLine();
         }
     }
 }

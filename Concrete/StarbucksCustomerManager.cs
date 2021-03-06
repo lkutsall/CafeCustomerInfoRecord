@@ -26,10 +26,5 @@ namespace CafeCustomerInfoRecord.Concrete
             }
         }
 
-        private void CheckIfRealPerson(Customer customer)
-        {
-            throw new NotImplementedException();
-        }
-
     }
 }

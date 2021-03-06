@@ -4,6 +4,7 @@ using System.Text;
 
 using CafeCustomerInfoRecord.Abstract;
 using CafeCustomerInfoRecord.Entities;
+using MernisReference;
 
 namespace CafeCustomerInfoRecord.Adapters
 {
@@ -11,7 +12,8 @@ namespace CafeCustomerInfoRecord.Adapters
     {
         public bool CheckIfRealPerson(Customer customer)
         {
-            return true;
+            KPSPublicSoapClient client = new KPSPublicSoapClient(KPSPublicSoapClient.EndpointConfiguration.KPSPublicSoap);
+            return client.TCKimlikNoDogrulaAsync(Convert.ToInt64(customer.NationalityId), customer.FirstName.ToUpper(), customer.LastName.ToUpper(), customer.DateOfBirth.Year).Result.Body.TCKimlikNoDogrulaResult;
         }
     }
 }
