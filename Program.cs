@@ -1,12 +1,17 @@
 ﻿using System;
 
+using CafeCustomerInfoRecord.Concrete;
+using CafeCustomerInfoRecord.Abstract;
+using CafeCustomerInfoRecord.Entities;
+
 namespace CafeCustomerInfoRecord
 {
-    class Program
+    partial class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            BaseCustomerManager customerManager = new StarbucksCustomerManager(new CustomerCheckManager);
+            customerManager.Save(new Customer { FirstName = "Kutsal", LastName = "Mustafaoglu", DateOfBirth = new DateTime(1990, 04, 26), NationalityId = "11111111111", Id = 1 });
         }
     }
 }
